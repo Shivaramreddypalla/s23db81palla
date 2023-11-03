@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+    - var Watch=[{watchModel:"Rolex",watchYear:"2021",watchPrice:1200},{watchModel:"Rado",watchYear:"2020",watchPrice:700},{watchModel:"Fossil",watchYear:"2022",watchPrice:229}]
+  div(class="container-fluid")
+  div(class="row")
+   each f,index  in Watch
+    div(class="col-sm-2" onclick =`buy(${index})`) #{f.watchModel}, #{f.watchYear}, #{f.watchPrice}
+    script.
+        function buy(a)
+        {
+            alert(`You purchased Item ${a+1}`)
+        } 
