@@ -1,7 +1,7 @@
 # s23db81palla
 Assignment 11
 
-[Remote Render server](https://f23wb81palla.onrender.com)
+[Remote Render server](https://s23db81palla.onrender.com)
 
 class Watch{
     String watchModel;
