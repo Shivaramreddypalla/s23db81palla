@@ -59,21 +59,11 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once("open", function(){
 console.log("Connection to DB succeeded")});
 
-async function recreateDB() {
-  try {
-    // Define a timeout value in milliseconds
-    const timeout = 30000; // 30 seconds
-    // Delete everything with a timeout
-    const deleteManyPromise = Watch.deleteMany({}).exec();
-    
-    // Use Promise.race to race the deleteManyPromise against a timeout promise
-    await Promise.race([
-      deleteManyPromise,
-      new Promise((_, reject) => setTimeout(() => reject(new Error('Operation timed out')), timeout))
-    ]);
-
-    console.log("Deletion successful");
-
+async function recreateDB(){
+  // Delete everything
+  await Watch.deleteMany({}).maxTimeMS(30000);
+  console.log("Deletion successful");
+  
   let instance1 = new 
   Watch({watchModel:"Rolex", watchYear:'2021', 
   watchPrice:1200});
@@ -100,11 +90,7 @@ async function recreateDB() {
   //if(err) return console.error(err);
   console.log("Third object saved")
   //});
- 
-} catch (error) {
-  console.error("Error during deleteMany:", error.message);
-}
-}
+ }
  let reseed = true;
  if (reseed) { recreateDB();}
 
