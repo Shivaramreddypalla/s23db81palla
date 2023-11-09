@@ -62,6 +62,8 @@ console.log("Connection to DB succeeded")});
 async function recreateDB(){
   // Delete everything
   await Watch.deleteMany({}).maxTimeMS(30000);
+  console.log("Deletion successful");
+  
   let instance1 = new 
   Watch({watchModel:"Rolex", watchYear:'2021', 
   watchPrice:1200});
