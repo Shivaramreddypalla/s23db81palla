@@ -8,15 +8,15 @@ var Watch_controller = require('../controllers/Watch');
 router.get('/', api_controller.api);
 /// COSTUME ROUTES ///
 // POST request for creating a Watch.
-router.post('/Watches', Watch_controller.Watch_create_post);
+router.post('/Watch', Watch_controller.Watch_create_post);
 // DELETE request to delete Watch.
-router.delete('/Watches/:id', Watch_controller.Watch_delete);
+router.delete('/Watch/:id', Watch_controller.Watch_delete);
 // PUT request to update Watch.
-router.put('/Watches/:id', Watch_controller.Watch_update_put);
+router.put('/Watch/:id', Watch_controller.Watch_update_put);
 // GET request for one Watch.
-router.get('/Watches/:id', Watch_controller.Watch_detail);
+router.get('/Watch/:id', Watch_controller.Watch_detail);
 // GET request for list of all Watch items.
-router.get('/Watches', Watch_controller.Watch_list);
+router.get('/Watch', Watch_controller.Watch_list);
 module.exports = router;
 
 

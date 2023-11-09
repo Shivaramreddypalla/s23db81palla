@@ -1,9 +1,6 @@
 var express = require('express');
+const Watch_controlers= require('../controllers/Watch');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Watch', { title: 'Search Results Watch' });
-});
-
+/* GET watches */
+router.get('/', Watch_controlers.Watch_view_all_Page );
 module.exports = router;

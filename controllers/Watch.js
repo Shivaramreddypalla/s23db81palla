@@ -27,6 +27,18 @@ exports.Watch_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: Watch update PUT' + req.params.id);
 };
 
+// VIEWS
+// Handle a show all view
+exports.Watch_view_all_Page = async function (req, res) {
+    try {
+        theWatch = await Watch.find();
+        res.render('Watch', { title: 'Watch Search Results', results: theWatch });
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
 
 
 
