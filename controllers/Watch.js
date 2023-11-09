@@ -40,6 +40,27 @@ exports.Watch_view_all_Page = async function (req, res) {
     }
 };
 
+// Handle Watch create on POST.
+exports.Watch_create_post = async function (req, res) {
+    console.log(req.body)
+    let document = new Watch();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"watchPrice":"Rolex", "watchYear":2021, "watchPrice":1200}
+    document.watchModel = req.body.watchModel;
+    document.watchYear = req.body.watchYear;
+    document.watchPrice = req.body.watchPrice;
+    try {
+        let result = await document.save();
+        res.send(result);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
+
 
 
     
