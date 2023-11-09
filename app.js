@@ -34,7 +34,7 @@ app.use('/resource', resourceRouter);
 
 const connectionString = process.env.MONGO_CON;
 mongoose = require('mongoose');
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true, maxTimeMS: 30000 });
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true, connectTimeoutMS: 30000 });
 
 
 // catch 404 and forward to error handler
