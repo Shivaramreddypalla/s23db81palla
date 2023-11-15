@@ -11,21 +11,21 @@ exports.Watch_list = async function (req, res) {
     }
 };
 // for a specific Watches.
-exports.Watch_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: Watch detail: ' + req.params.id);
+exports.Watch_detail = function (req, res) {
+    res.send('NOT IMPLEMENTED: Watch detail: ' + req.params.id);
 };
 // Handle Watch create on POST.
-exports.Watch_create_post = function(req, res) {
-res.send('NOT IMPLEMENTED: Watch create POST');
+exports.Watch_create_post = function (req, res) {
+    res.send('NOT IMPLEMENTED: Watch create POST');
 };
-// Handle Watch delete form on DELETE.
-exports.Watch_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Watch delete DELETE ' + req.params.id);
-};
+
 // Handle Watch update form on PUT.
-exports.Watch_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Watch update PUT' + req.params.id);
+exports.Watch_update_put = function (req, res) {
+    res.send('NOT IMPLEMENTED: Watch update PUT' + req.params.id);
 };
+
+ 
+
 
 // VIEWS
 // Handle a show all view
@@ -61,6 +61,67 @@ exports.Watch_create_post = async function (req, res) {
     }
 };
 
+// for a specific Costume.
+exports.Watch_detail = async function (req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await Watch.findById(req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+};
+
+// Handle Costume update form on PUT.
+exports.Watch_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Watch.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.watchModel)
+            toUpdate.watchModel = req.body.watchModel;
+        if (req.body.watchYear) toUpdate.watchYear = req.body.watchYear;
+        if (req.body.watchPrice) toUpdate.watchPrice = req.body.watchPrice;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+    }
+};
 
 
-    
+// Handle Costume delete on DELETE.
+exports.Watch_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Watch.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
+
+    // Handle a show one view with id specified by query
+exports.Watch_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Watch.findById( req.query.id)
+    res.render('Watchdetail',
+    { title: 'Watch Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
+
+
+

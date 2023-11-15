@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+
+  - let Watchid = toShow._id
+  - let watchModel = toShow.watchModel
+  - let watchYear = toShow.watchYear
+  - let watchPrice = toShow.watchPrice
+
+  div
+    div.row
+      div(class='WatchAttr mr-3') Watch ID is:
+      div #{Watchid}
+    div.row
+      div(class='WatchAttr mr-3') Watch Model is:
+      div #{watchModel}
+    div.row
+      div(class='WatchAttr mr-3') Watch Year is:
+      div #{watchYear}
+    div.row
+      div(class='WatchAttr mr-3') Watch Price is:
+      div #{watchPrice}

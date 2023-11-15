@@ -17,6 +17,9 @@ router.put('/Watch/:id', Watch_controller.Watch_update_put);
 router.get('/Watch/:id', Watch_controller.Watch_detail);
 // GET request for list of all Watch items.
 router.get('/Watch', Watch_controller.Watch_list);
-module.exports = router;
+ 
+// GET request for one costume.
+router.get('/Watch/:id', Watch_controller.Watch_detail);
 
+module.exports = router;
 
