@@ -24,7 +24,7 @@ exports.Watch_update_put = function (req, res) {
     res.send('NOT IMPLEMENTED: Watch update PUT' + req.params.id);
 };
 
- 
+
 
 
 // VIEWS
@@ -96,31 +96,46 @@ failed`);
 
 
 // Handle Costume delete on DELETE.
-exports.Watch_delete = async function(req, res) {
+exports.Watch_delete = async function (req, res) {
     console.log("delete " + req.params.id)
     try {
-    result = await Watch.findByIdAndDelete( req.params.id)
-    console.log("Removed " + result)
-    res.send(result)
+        result = await Watch.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
     } catch (err) {
-    res.status(500)
-    res.send(`{"error": Error deleting ${err}}`);
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
     }
-    };
+};
 
-    // Handle a show one view with id specified by query
-exports.Watch_view_one_Page = async function(req, res) {
+// Handle a show one view with id specified by query
+exports.Watch_view_one_Page = async function (req, res) {
     console.log("single view for id " + req.query.id)
-    try{
-    result = await Watch.findById( req.query.id)
-    res.render('Watchdetail',
-    { title: 'Watch Detail', toShow: result });
+    try {
+        result = await Watch.findById(req.query.id)
+        res.render('Watchdetail',
+            { title: 'Watch Detail', toShow: result });
     }
-    catch(err){
-    res.status(500)
-    res.send(`{'error': '${err}'}`);
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
-    };
+};
+
+// Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.Watch_create_Page = function (req, res) {
+    console.log("create view")
+    try {
+        res.render('Watchcreate', { title: 'Watch Create' });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
 
 
 

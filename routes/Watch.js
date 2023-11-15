@@ -7,3 +7,6 @@ module.exports = router;
 
 /* GET detail costume page */
 router.get('/detail', Watch_controlers.Watch_view_one_Page);
+
+/* GET create costume page */
+router.get('/create', Watch_controlers.Watch_create_Page);

@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= title
+  form(id='WatchForm', action="/resource/Watch", method="POST")
+    div.form-group
+      label.WatchAttr(for='watchModel') watch Model
+      input#costume_type(type='text', name='watchModel')
+    div.form-group
+      label.WatchAttr(for='watchYear') watch Year
+      input#size(type='number', name='watchYear')
+    div.form-group
+      label.WatchAttr(for='watchPrice') Watch Price
+      input#cost(type='number', name='watchPrice')
+    input(type="submit")
+  script.
+    document.forms['WatchForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that the form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeeded");
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed: " + error);
+      });
+    });
