@@ -8,12 +8,8 @@ a {
 }
 
 .WatchAttr {
-  background-color: #3498db; /* Dodger Blue */
-  color: #fff; /* White text */
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease-in-out;
-}
+  background-color: aquamarine;
+  width: 120px;
+  }
+  
 
