@@ -15,14 +15,14 @@ router.get('/', Watch_controlers.Watch_view_all_Page );
 module.exports = router;
 
 /* GET detail watch page */
-router.get('/detail', Watch_controlers.Watch_view_one_Page);
+router.get('/detail',secured, Watch_controlers.Watch_view_one_Page);
 
 /* GET create watch page */
-router.get('/create', Watch_controlers.Watch_create_Page);
+router.get('/create',secured, Watch_controlers.Watch_create_Page);
 
 /* GET create update page */
 router.get('/update',secured, Watch_controlers.Watch_update_Page);
 
 /* GET delete watch page */
-router.get('/delete', Watch_controlers.Watch_delete_Page);
+router.get('/delete',secured, Watch_controlers.Watch_delete_Page);
 
