@@ -10,7 +10,9 @@ const WatchSchema = mongoose.Schema({
     },
     watchPrice: {
         type: Number,
-        required: true
+        required: true,
+        min: 0,
+        max: 5000
     }
 });
 module.exports = mongoose.model("Watch", 
